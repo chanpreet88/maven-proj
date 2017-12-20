@@ -8,9 +8,7 @@ node {
    }
    stage('test') {
      
-def mavencompile = docker.image('maven')
-
-mavencompile.pull()
+def mavencompile = docker.image('maven').run("-v "$PWD":/usr/src/mymaven -w /usr/src/mymaven")
 
 mavencompile.inside {
 
